@@ -463,7 +463,7 @@ def parseType(_type, stream, encoding, extras):
                 if lengths[x] != len(y):
                     logger.warning('Error while parsing multiple type. Expected length {}, got {}. Ignoring.'.format(lengths[x], len(y)))
             return ret
-        elif _type in (0x1002, 0x1003, 0x1004, 0x1005, 0x1007, 0x1040, 0x1048):
+        elif _type in (0x1002, 0x1003, 0x1004, 0x1005, 0x1007, 0x1040, 0x1048,0x1014): #added 0x1014 as other work around too
             if stream != len(extras):
                 logger.warning('Error while parsing multiple type. Expected {} entr{}, got {}. Ignoring.'.format(stream, ('y' if stream == 1 else 'ies'), len(extras)))
             if _type == 0x1002:
