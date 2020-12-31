@@ -135,7 +135,7 @@ You can install using pip:
 
 .. code:: sh
 
-     pip install git+https://github.com/mattgwwalker/msg-extractor
+     pip install git+https://github.com/bhernandez22/msg-extractor
 
 or you can include this in your list of python dependencies with:
 
