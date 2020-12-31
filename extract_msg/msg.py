@@ -236,7 +236,7 @@ class MSGFile(olefile.OleFileIO):
                         streams = len(contents) // 4 # These lengths are normal.
                     elif _type == '1102':
                         streams = len(contents) // 8 # These lengths have 4 0x00 bytes at the end for seemingly no reason. They are "reserved" bytes
-                    elif _type in ('1002', '1003', '1004', '1005', '1007', '1040', '1048'):
+                    elif _type in ('1002', '1003', '1004', '1005', '1007', '1040', '1048','1014'): //'1014' added as work around
                         try:
                             streams = self.mainProperties[x[-8:]].realLength
                         except:
@@ -249,7 +249,7 @@ class MSGFile(olefile.OleFileIO):
                             for y in range(streams):
                                 if self.Exists(x + '-' + properHex(y, 8), False):
                                     extras.append(self._getStream(x + '-' + properHex(y, 8), False))
-                    elif _type in ('1002', '1003', '1004', '1005', '1007', '1040', '1048'):
+                    elif _type in ('1002', '1003', '1004', '1005', '1007', '1040', '1048', '1014'): //'1014' added as work around here too
                         extras = divide(contents, (2 if _type == '1002' else 4 if _type in ('1003', '1004') else 8 if type in ('1005', '1007', '1040') else 16))
                         contents = streams
                 return True, parseType(int(_type, 16), contents, self.stringEncoding, extras)
